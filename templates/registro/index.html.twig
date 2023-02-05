@@ -3,7 +3,16 @@
 {% block title %}Hello RegistroController!{% endblock %}
 
 {% block body %}
-<h1> Hola arqueotips </h1>
+    
+    
+                {% for message in app.flashes('exito') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ form(formulario) }}
 
-
+            </div>
+        </div>
+    </div>
 {% endblock %}
