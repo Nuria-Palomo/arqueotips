@@ -24,7 +24,7 @@ class Comentarios
     private $posts;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $fecha_publicacion = null;
+    private ?\DateTimeInterface $fecha_posts = null;
 
     public function getId(): ?int
     {
@@ -45,12 +45,12 @@ class Comentarios
 
     public function getFechaPublicacion(): ?\DateTimeInterface
     {
-        return $this->fecha_publicacion;
+        return $this->fecha_posts;
     }
 
-    public function setFechaPublicacion(\DateTimeInterface $fecha_publicacion): self
+    public function setFechaPublicacion(\DateTimeInterface $fecha_posts): self
     {
-        $this->fecha_publicacion = $fecha_publicacion;
+        $this->fecha_posts = $fecha_posts;
 
         return $this;
     }

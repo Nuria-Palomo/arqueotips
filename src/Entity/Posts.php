@@ -17,11 +17,11 @@ class Posts
     #[ORM\Column(length: 255)]
     private ?string $titulo = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable:true)]
     private ?string $foto = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $fecha_publicacion = null;
+    private ?\DateTimeInterface $fecha_posts = null;
 
     #[ORM\Column(length: 90000)]
     private ?string $contenido = null;
@@ -32,6 +32,10 @@ class Posts
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
     private $user;
 
+    public function __construct()
+    {
+        $this->fecha_posts= new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -62,14 +66,14 @@ class Posts
         return $this;
     }
 
-    public function getFechaPublicacion(): ?\DateTimeInterface
+    public function getFechaPost(): ?\DateTimeInterface
     {
-        return $this->fecha_publicacion;
+        return $this->fecha_post;
     }
 
-    public function setFechaPublicacion(\DateTimeInterface $fecha_publicacion): self
+    public function setFechaPost(\DateTimeInterface $fecha_post): self
     {
-        $this->fecha_publicacion = $fecha_publicacion;
+        $this->fecha_post = $fecha_post;
 
         return $this;
     }
@@ -84,5 +88,34 @@ class Posts
         $this->contenido = $contenido;
 
         return $this;
+    }
+
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param mixed $comentarios
+     */
+    public function setComentarios($comentarios): void
+    {
+        $this->comentarios = $comentarios;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
     }
 }
