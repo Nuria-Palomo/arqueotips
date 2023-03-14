@@ -68,12 +68,12 @@ class Posts
 
     public function getFechaPost(): ?\DateTimeInterface
     {
-        return $this->fecha_post;
+        return $this->fecha_posts;
     }
 
     public function setFechaPost(\DateTimeInterface $fecha_post): self
     {
-        $this->fecha_post = $fecha_post;
+        $this->fecha_posts = $fecha_posts;
 
         return $this;
     }
