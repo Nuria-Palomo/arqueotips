@@ -16,6 +16,9 @@ class Profesion
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nombre = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'profesion')]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;

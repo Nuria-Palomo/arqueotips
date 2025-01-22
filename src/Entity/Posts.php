@@ -29,6 +29,12 @@ class Posts
     #[ORM\Column(length: 80000)]
     private ?string $contenido = null;
 
+    #[ORM\OneToMany(targetEntity: Comentarios::class, mappedBy: 'posts')]
+    private $comentarios;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;

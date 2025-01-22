@@ -34,6 +34,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
+    #[ORM\OneToMany(targetEntity: Comentarios::class, mappedBy: 'user')]
+    private Collection $comentarios;
+
+    #[ORM\OneToMany(targetEntity: Posts::class, mappedBy: 'user')]
+    private $posts;
+
+    #[ORM\OneToMany(targetEntity: Profesion::class, mappedBy: 'user')]
+    private $profesion;
+
     public function getId(): ?int
     {
         return $this->id;

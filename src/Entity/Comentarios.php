@@ -16,6 +16,12 @@ class Comentarios
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $comentario = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comentarios')]
+    private Category $user;
+
+    #[ORM\ManyToOne(targetEntity: Posts::class, inversedBy: 'comentarios')]
+    private $posts;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?datetime $fecha_publicacion = null;
 
